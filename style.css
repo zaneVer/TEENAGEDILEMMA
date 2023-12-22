@@ -1,0 +1,435 @@
+/*-----------------------------------*\
+  #style.css
+\*-----------------------------------*/
+
+/**
+ * copyright 2022 @codewithsadee
+ */
+
+
+
+
+
+/*-----------------------------------*\
+  #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+:root {
+
+  /**
+    * colors
+  */
+
+  --flourescent-blue: #00f9ef;
+  --heliotrope-gray: #aba6bd;
+  --russian-violet: hsl(252, 80%, 16%);
+  --dark-violet: #0c003d;
+  --space-cadet: #221d48;
+  --blue-ryb: #0052ff;
+  --white: #ffffff;
+  --lust: #CBAB92;
+  --fury: #A35C48; 
+  --passion: #C06C84; 
+  --waxFlower: #F1B6AC;
+  --Fenk: #FF1493;
+  
+  
+  --gradient: linear-gradient(to right, var(--waxFlower), var(--Fenk));
+
+  /**
+   * typography
+   */
+
+  --ff-josefin: 'Josefin sans', sans-serif;
+
+  --fs-1: 25px;
+  --fs-2: 18px;
+  --fs-3: 17px;
+  --fs-4: 15px;
+
+  --fw-500: 500;
+  --fw-700: 700;
+  /**
+   * transition
+   */
+
+
+  --transition: 0.25s ease-in-out;
+  
+  /**
+   * spacing
+   */
+
+  --section-padding: 30px;
+
+}
+
+
+
+
+
+/*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li { list-style: none; }
+a { text-decoration: none; }
+
+
+a,
+img,
+span,
+input,
+button,
+ion-icon { display: black;}
+
+button {
+  font: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+input {
+  font: inherit;
+  border: none;
+  width: 100%;
+}
+
+:focus {outline-offset: 4px; }
+
+html {
+  font-family: var(--ff-josefin);
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--fury);
+  color: var(--white);
+}
+
+::-webkit-scrollbar { width: 10px; }
+
+::-webkit-scrollbar-track {
+  background: var(#CBAB92);
+  border-left: 1px solid var(--space-cadet);
+}
+
+::-webkit-scrollbar-thumb { background: hsla(0, 0%, 100%, 0.8);}
+
+::-webkit-scrollbar-thumb:hover { background: hsla(0, 0%, 100%, 0.6); }
+
+
+
+
+
+/*-----------------------------------*\
+  #REUSED STYLE
+\*-----------------------------------*/
+
+.btn {
+  color: var(--white);
+  font-size: var(--fs-4);
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 9px 10px;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background: var(--gradient);
+  background-size: 500%;
+  background-position: right;
+  padding: 15px 25px;
+  gap: px;
+  transition: background var(--transition);
+}
+
+.btn-primary:is(:hover, :focus) { background-position: left; }
+
+.btn-primary > ion-icon { font-size: 18px; }
+
+.btn-primary > span { margin-top: 3px; }
+
+.container { padding: 0 15px; }
+
+.h3 {
+  color: var(--white);
+  font-size: var(--fs-2);
+  line-height: 1.5;
+}
+
+
+
+/*-----------------------------------*\
+  # HEADER
+\*-----------------------------------*/
+
+header {
+  position: fixed;
+  top: -90px;
+  left: 0;
+  width: 100%;
+  padding-block: 15px;
+  box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.5);
+  background: var(--lust);
+  transition: var(--transition);
+  z-index: 4;
+}
+
+header.active { top: 0; }
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-toggle-btn {
+  color: var(--white);
+  font-size: 35px;
+  border-radius: 4px;
+}
+
+.nav-toggle-btn ion-icon { --ionicon-stroke-width: 40px}
+
+.navbar {
+  position: fixed;
+  bottom: -270px;
+  left: 0;
+  width: 100%;
+  background: var(--passion);
+  border-radius: 8px 8px 0 0;
+  padding: 30px 10px 10px;
+  box-shadow: 0 -1px 10px hsla(0, 0%, 0%, 0.5);
+  z-index: 2;
+  visibility: hidden;
+  transition: 0.15s ease-in;
+}
+
+.navbar.active {
+  bottom: 0;
+  visibility: visible;
+  transition: 0.25s ease-out;
+}
+
+.navbar-list {
+  padding-bottom: 5px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.5);
+  margin-bottom: 5px;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  transition: translatex(-50%);
+  height: 4px;
+  background: hsla(0, 0%, 100%, 0.5);
+  border-radius: 5px;
+}
+
+
+.navbar-link {
+  color: var(--white);
+  font-size: var(--fs-4);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.navbar-link:is(:hover, :focus) { background: hsla(0, 0%, 100%, 0.1); }
+
+.navbar-actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar-btn {
+  color: var(--white);
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+.navbar-btn:is(:hover, :focus), 
+.navbar-actions .btn:is(:hover, :focus) { background: hsla(0, 0%, 100%, 0.1); }
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.overlay.active {
+  pointer-events: all;
+  background: hsla(0, 0%, 0%, 0.7);
+}
+
+
+
+/*-----------------------------------*\
+  # HERO
+\*-----------------------------------*/
+
+.hero { padding: 140px 0 var(--section-padding); }
+
+.hero-title {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  color: var(--white);
+  font-size: var(--fs-4);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+
+.btn-primary { margin-bottom: 25px; }
+
+.btn-title {
+  background: var(--white);
+  width: max-content;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-size: var(--fs-4);
+  font-weight: var(--fw-700);
+  margin-bottom: 25px;
+  font-size: larger;
+}
+
+.image-size {
+  size-adjust: 18%;
+}
+
+.header-image {
+ size-adjust: 60%;
+}
+
+.hero .btn-link {
+  color: var(--white);
+  font-size: var(--fs-4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  background: var(--gradient);
+  padding-bottom: 5px;
+  background-size: 0 2px;
+  background-repeat: no-repeat;
+  background-position: 0 97%;
+  border-radius: 4px;
+  transition: background var(--transition);
+}
+
+.hero .btn-link.btn:is(:hover, :focus) { background-size: 100% 2px; }
+
+.hero .btn-link { margin-bottom: 15px; }
+
+.hero-banner { display: none; }
+
+
+
+
+
+/*-----------------------------------*\
+  # PODCAST
+\*-----------------------------------*/
+
+.podcast { padding: var(--section-padding) 0; }
+
+.podcast-list {
+  display: grid;
+  gap: 30px;
+}
+
+.podcast-card { border-radius: 4px; } 
+
+.card-banner {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.card-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.podcast-card:is(:hover, :focus) .card-banner::before {
+  background: hsla(0, 0%, 100%, 0.1);
+}
+
+.card-banner img { width: 100%; }
+
+.card-banner-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  color: var(--white);
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  font-size: 20px;
+  transition: var(--transition);
+}
+
+.podcast-card:is(:hover, :focus) .card-banner-icon {
+  background: var(--white);
+  color: var(--blue-ryb);
+}
+
+.card-meta {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: var(--heliotrope-gray);
+  font-size: var(--fs-4);
+  margin-left: 35px;
+  margin-top: 15px;
+}
+
+.card-meta::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -35px;
+  transform: translateY(-2px);
+  width: 25px;
+  height: 2px;
+  background: var(--heliotrope-gray);
+}
+
+.podcast-card .card-title {
+ display: inline;
+ padding: 3px 0;
+ background: var(--gradient);
+ background-position: 0 95%;
+ background-repeat: no-repeat;
+ background-size: 0 2px;
+ transform: var(--transition);
+}
+
+.podcast-card:is(:hover, :focus) .card-title { background-size: 100% 2px; }
